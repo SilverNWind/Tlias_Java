@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>誕生日入力</title>
+</head>
+<body>
+	[[${@account.name}]]さんの誕生日は？<br>
+	
+	<form action="/calcAge" method="post">
+		<select name="year">
+			<option th:each="i : ${#numbers.sequence(2020, 1950, -1)}" 
+			        th:value="${i}" 
+			        th:text="${i}+ '年'"></option>
+		</select>
+		<select name="month">
+			<option th:each="i : ${#numbers.sequence(1, 12)}" 
+			        th:value="${i}" 
+			        th:text="${i}+ '月'"></option>
+		</select>
+		<select name="day">
+			<option th:each="i : ${#numbers.sequence(1, 31)}" 
+			        th:value="${i}" 
+			        th:text="${i}+ '日'"></option>
+		</select>
+		<button>送信</button>
+	</form>
+</body>
+</html>
